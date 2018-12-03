@@ -1,0 +1,183 @@
+<div class="container" id="createPlanForm">
+    <div class="row main">
+        <div class="main-login main-center">
+            <form class="form-horizontal" id="createPlanForm" name="createPlanForm">
+                <div class="panel-heading">
+                    <div class="panel-title text-center">
+                        <h1 class="title" style="color:rgb(31, 187, 187)">Create Plan</h1>
+                        <hr />
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="amount" class="cols-sm-2 control-label">
+                        Amount
+                        (5,000 - 5,000,000)
+                    </label>
+                    <div class="cols-sm-10">
+                        <div class="input-group">
+                            <span class="input-group-addon"><i aria-hidden="true"></i></span>
+                            <input type="text" class="form-control" id="amount" name="amount" placeholder="Enter amount to save"
+                                ng-model="save.amount" restrict-input="{type: 'digitsOnly'}" required />
+                            <span class="error-message" ng-show="showMessage(createPlanForm.amount)" style="color:red">Please
+                                complete this field.
+                            </span>
+                        </div>
+                    </div>
+                </div>
+
+
+                <div class="form-group">
+                    <label for="savingsMode" class="cols-sm-2 control-label">Savings Mode</label>
+                    <div class="cols-sm-10">
+                        <div class="input-group">
+                            <span class="input-group-addon"><i aria-hidden="true"></i></span>
+                            <input  id="radioFixedSavings " class="form-control" name="savingsMode" type="radio" ng-model="save.savingsMode"
+                                value="fixedSavings" checked />
+                            Fixed Savings
+                       
+                            <span class="input-group-addon"><i aria-hidden="true"></i></span>
+                            <input id="radioContinuousSavings" class="form-control" name="savingsMode" type="radio" ng-model="save.savingsMode"
+                                value="continousSavings" ng-show="continousSavingsForm= true" />
+                            Continous Savings
+                        </div>
+                    </div>
+                </div>
+
+                <div class="form-group" ng-show="save.savingsMode === 'continousSavings' ">
+
+                    <div  style="color:red">
+                        <label for="savingsMode" class="cols-sm-2 control-label">
+                            Payment Mode (select one option)
+                        </label>
+                        <div class="container">
+                            <div class="input-group">
+                                <input name="modeOfPayment" type="radio" ng-model="save.modeOfPayment" ng-value="'daily'"
+                                    checked />
+                                <label>Daily</label>
+                            </div>
+                            <div class="input-group">
+                                <input name="modeOfPayment" type="radio" ng-model="save.modeOfPayment" ng-value="'weeks'"
+                                    checked />
+                                <label>Weekly</label>
+                            </div>
+                            <div class="input-group">
+                                <input name="modeOfPayment" type="radio" ng-model="save.modeOfPayment" ng-value="'months'"
+                                    checked />
+                                <label>Monthly</label>
+                            </div>
+                            <div class="input-group">
+                                <input name="modeOfPayment" type="radio" ng-model="save.modeOfPayment" ng-value="'years'"
+                                    checked />
+                                <label>Yearly</label>
+                            </div>
+
+                        </div>
+                    </div>
+                    
+                <div class="form-group">
+                    <label for="savingsPlan" class="cols-sm-2 control-label">
+                        Savings Plan
+                    </label>
+                    <div class="input-group">
+                        <input type="text" class="form-control" id="savingsPlan" name="savingsPlan" placeholder="Type of plan"
+                            ng-model="save.savingsPlan" required /><br><br>
+                        <span class="error-message" ng-show="showMessage(createPlanForm.savingsPlan)" style="color:red">Please
+                            complete this field.</span>
+                    </div>
+                </div>
+                <div class="form-group" >
+                    <label for="amountPerDeposit" class="cols-sm-2 control-label">
+                        Amount Per Deposit                       
+                    </label>
+                    <div class="cols-sm-10">
+                        <div class="input-group">
+                            <span class="input-group-addon"><i aria-hidden="true"></i></span>
+                            <input type="number"  class="form-control" id="amountPerDeposit" name="amountPerDeposit"  placeholder="Enter amount for subsequent deposit"
+                                ng-model="save.amountPerDeposit" restrict-input="{type: 'digitsOnly'}" />
+                            <span class="error-message" ng-show="showMessage(createPlanForm.amountPerDeposit)" style="color:red">Please
+                                complete this field.
+                            </span>
+                        </div>
+                    </div>
+                </div>
+                <div class="form-group" style="display: none;">
+                    <label for="amountDeposited" class="cols-sm-2 control-label">
+                        Amount Deposited at create plan
+                         (*Not compulsory)                       
+                    </label>
+                    <div class="cols-sm-10">
+                        <div class="input-group">
+                            <span class="input-group-addon"><i aria-hidden="true"></i></span>
+                            <input type="number" class="form-control" id="amountDeposited" name="amountDeposited" value="0" placeholder="Enter amount if you want to deposit now"
+                                ng-model="save.amountDeposited" restrict-input="{type: 'digitsOnly'}" />
+                            <span class="error-message" ng-show="showMessage(createPlanForm.amountDeposited)" style="color:red">Please
+                                complete this field.
+                            </span>
+                        </div>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="durations" class="cols-sm-2 control-label">
+                        Duration (in months)
+                    </label>
+                    <div class="input-group">
+                        <input class="form-control" type="text" id="duration" name="duration"
+                            restrict-input="{type: 'digitsOnly'}" placeholder="Duration" ng-model="save.duration"
+                            required /><br><br>
+                        <span class="error-message" ng-show="showMessage(createPlanForm.duration)" style="color:red">Please
+                            complete this field.</span>
+                    </div>
+                </div>
+                <!-- <div class="form-group">
+                    <div label for="calendar" class="cols-sm-2 control-label">
+                        Calendar
+                    </div>
+                    <div> <input type="date" class="btn btn-lg col-12 " name="bday"></div> 
+                </div> -->
+
+
+                <div class="form-group ">
+                    <button  class="btn btn-primary btn-lg btn-block" style="background:rgb(31, 187, 187)"
+                        ng-click="continuousSavingsCreatePlan()" >
+                        Create Plan</button>
+                </div>
+            </div>
+
+
+            <div class="form-group" ng-show="save.savingsMode === 'fixedSavings' ">
+  
+                <div class="form-group">
+                    <label for="savingsPlan" class="cols-sm-2 control-label">
+                        Savings Plan
+                    </label>
+                    <div class="input-group">
+                        <input type="text" class="form-control" id="savingsPlan" name="savingsPlan" placeholder="Type of plan"
+                            ng-model="save.savingsPlan" required /><br><br>
+                        <span class="error-message" ng-show="showMessage(createPlanForm.savingsPlan)" style="color:red">Please
+                            complete this field.</span>
+                    </div>
+                </div>
+                
+                <div class="form-group">
+                    <label for="durations" class="cols-sm-2 control-label">
+                        Duration (in months)
+                    </label>
+                    <div class="input-group">
+                        <input class="form-control" type="text" type="number" id="duration" name="duration"
+                            restrict-input="{type: 'digitsOnly'}" placeholder="Duration" ng-model="save.duration"
+                            required /><br><br>
+                        <span class="error-message" ng-show="showMessage(createPlanForm.duration)" style="color:red">Please
+                            complete this field.</span>
+                    </div>
+                </div>
+
+                <div class="form-group ">
+                    <button type="submit" class="btn btn-primary btn-lg btn-block login-button" style="background:rgb(31, 187, 187)"
+                        ng-click="createPlan()">
+                        Create Plan </button>
+                </div>
+            </div>
+            </form>
+        </div>
+    </div>
+</div>

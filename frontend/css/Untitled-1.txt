@@ -1,0 +1,126 @@
+<div class="limiter">
+      <div class="wrapper ">
+            <div class="sidebar" data-color="azure" data-background-color="white" data-image="../assets/img/faces/card-profile2-square.jpg">
+                  <!--
+                            Tip 1: You can change the color of the sidebar using: data-color="purple | azure | green | orange | danger"
+                    
+                            Tip 2: you can also add an image using data-image tag
+                        -->
+
+                  <div class="logo">
+                        <div class="">
+                              <h3 style="color:rgba(0, 152, 202, 0.856)">Dashboard</h3>
+                              <img src="/img/faces/card-profile1-square.jpg" width="150" class="circle">
+                        </div>
+                  </div>
+
+                  <div class="sidebar-wrapper">
+                        <div>
+                              <h3 style="color:red">{{permission}}</h3>
+                              <h3 style="color:red">{{name}} </h3>
+                        </div>
+                        <ul class="nav">
+                              <li class="nav-item ">
+                                    <a class="nav-link" ui-sref="home">
+                                          <i class="material-icons">home</i>
+                                          <p>Home</p>
+                                    </a>
+                              </li>
+
+                              <li class="nav-item active  ">
+                                    <a class="nav-link" ui-sref="recurringDashboard" class="purple-text ">
+                                          <i class="material-icons">Continuous Dashboard</i>
+                                          <p>Dashboard</p>
+                                    </a>
+                              </li>
+                              <li class="nav-item ">
+                                    <a class="nav-link" ui-sref="userProfile" ng-click="showUserProfile()">
+                                          <i class="material-icons">person</i>
+                                          <p>Your Profile</p>
+                                    </a>
+                              </li>
+                              <li class="nav-item ">
+                                    <a class="nav-link" ui-sref="createPlan">
+                                          <i class="material-icons">content_paste</i>
+                                          <p>Create New Plan</p>
+                                    </a>
+                              </li>
+
+                              <li class="nav-item ">
+                                    <a class="nav-link" ui-sref="logout">
+                                          <i class="material-icons">logout</i>
+                                          <p>Logout</p>
+                                    </a>
+                              </li>
+                        </ul>
+                           
+      <div class="main-panel">
+                  <h3 style="color:rgba(0, 152, 202, 0.856); font-style: italic "><strong>Fixed Savings Dashboard</strong>
+                  </h3>
+                  <h4 style="color:rgba(0, 152, 202, 0.856); "><i class=" fa-divide"> divide</i>
+                  </h4>
+                  <!-- Navbar -->
+                  <nav class="navbar navbar-header navbar-absolute fixed-top ">
+                        <div class="container-fluid">
+                              <div class="navbar-wrapper">
+
+                                    <div ng-if=" permission == 'Admin'  ">
+                                          <div class=row>Administration area</div>
+                                          <div>
+                                                <div><a class="navbar-brand  btn-lg" ui-sref="listAllUsers" ng-click="viewAllUser(userId, permission)"
+                                                            style="color:rgba(0, 152, 202, 0.856);"><strong>View
+                                                                  Users</strong></a></div>
+                                          </div>
+                                    </div>
+
+                                    <div ng-if=" permission == 'superAdmin' ">
+                                          <div class="row" style="color:red">Super Administration area</div>
+
+                                          <a class="btn btn-lg " style="background:rgb(31, 187, 187)" ui-sref="listAdmin"
+                                                ng-click="viewAdmins(userId, permission)"><strong>Admins</strong></a>
+                                          <a class="btn btn-lg " style="background:rgb(31, 187, 187)" ui-sref="listAllUsers"
+                                                ng-click="viewAllUser(userId, permission)"><strong>View
+                                                      Users</strong></a>
+                                    </div>
+                              </div>
+
+                        </div>
+
+                  </nav>
+                  <table class=" table-striped table-responsive table-bordered">
+                        <thead style="color:rgba(0, 152, 202, 0.856);">
+                              <tr>
+                                    <th scope="col">S/N</th>
+                                    <th scope="col">Amount Invested</th>
+                                    <th scope="row">Duration</th>
+                                    <th scope="row">Savings Plan</th>
+                                    <th scope="row">Interest</th>
+                                    <th scope="row">Amount Expected</th>
+                                    <th scope="row">Payment Date</th>
+                                    <th scope="row">PayBack Date</th>
+                                    <th scope="row">Withdrawal Date</th>
+                                    <th scope="row">Amount Withdrawn</th>
+                                    <th scope="row">Withdrawal Status</th>
+                                    <th scope="row">Action</th>
+                              </tr>
+                        </thead>
+                        <tbody>
+                              <tr ng-repeat="saving in savings">
+                                    <td><span class="listing-number">{{ $index + 1 }}</span></td>
+                                    <td>#{{ saving.amount | number }}</td>
+                                    <td>{{ saving.duration }} month(s)</td>
+                                    <td>{{ saving.savingsPlan }}</td>
+                                    <td>{{ saving.interest}}</td>
+                                    <td>#{{ saving.amountExpected | number}}</td>
+                                    <td>{{ saving.paymentDate | date}}</td>
+                                    <td>{{ saving.dueDateForWithdrawal | date }}</td>
+                                    <td> {{ (saving.withdrawalDate) ? (saving.withdrawalDate) :' -- ' | date }} </td>
+                                    <td>#{{ saving.amountWithdraw | number }}</td>
+                                    <td>{{ saving.withdrawalStatus }}</td>
+                                    <td><button class="btn btn-lg " style="background:rgb(31, 187, 187)" ng-click="withdraw(saving._id, saving.dueDateForWithdrawal, saving.withdrawalStatus )">Withdraw</button></td>
+                              </tr>
+                        </tbody>
+                  </table>
+            </div>
+      
+            

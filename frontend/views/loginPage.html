@@ -1,0 +1,53 @@
+<div class="container" id="loginForm">
+  <div class="row main">
+    <div class="main-login main-center">
+      <form class="form-horizontal" id="loginForm" name="loginForm">
+        <div class="panel-heading">
+          <div class="panel-title text-center">
+            <h1 class="title" style="color:rgb(31, 187, 187)">Log in</h1>
+            <hr />
+          </div>
+        </div>
+        <div class="form-group">
+          <label for="email" class="cols-sm-2 control-label">Your Email</label>
+          <div class="cols-sm-10">
+            <div class="input-group">
+              <span class="input-group-addon"><i class="fa fa-envelope fa" aria-hidden="true"></i></span>
+              <input type="text" class="form-control" name="email" id="email" placeholder="Enter your Email" ng-model="user.email"
+                required />
+              <span class="error-message" ng-show="showMessage(loginForm.email)" style="color:red">Please complete this
+                field.
+              </span>
+              <span ng-show="!loginForm.email.$error.required
+                                  && loginForm.email.$error.email && loginForm.email.$dirty"
+                style="color:red">invalid email
+              </span>
+            </div>
+          </div>
+        </div>
+
+
+        <div class="form-group">
+          <label for="password" class="cols-sm-2 control-label">Password</label>
+          <div class="cols-sm-10">
+            <div class="input-group">
+              <span class="input-group-addon"><i class="fa fa-lock fa-lg" aria-hidden="true"></i></span>
+              <input type="password" class="form-control" name="password" id="password" placeholder="Enter your Password"
+                ng-model="user.password" required />
+              <span class="error-message" ng-show="showMessage(loginForm.password)" style="color:red">Please complete
+                this field.</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="form-group ">
+          <button type="button" class="btn btn-primary btn-lg btn-block login-button" style="background:rgb(31, 187, 187)"
+            ng-click="login()">Login</button>
+        </div>
+        <div class="login-register">
+          <a ui-sref="signUp">SigUp</a>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>

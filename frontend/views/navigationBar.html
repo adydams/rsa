@@ -1,0 +1,124 @@
+<nav class="navbar navbar-expand-lg navbar-nav fixed-top" id="mainNav">
+  <li class="nav-item">
+    <img src='/ribyLogo.PNG' class="left">
+  </li>
+  <div class="container">
+    <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarResponsive"
+      aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
+      Menu
+      <i class="fas fa-bars"></i>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarResponsive">
+      <ul class="navbar-nav ml-auto">
+        <li class="nav-item">
+          <a class="nav-link" ui-sref="home" style="color:red">HOME </a>
+        </li>
+        <div ng-if=" !state ">
+          <li class="nav-item" id="loginNav">
+            <a class="nav-link " ui-sref="login" style="color:red">LOGIN </a>
+          </li>
+        </div>
+        <div ng-if="!state ">
+          <li class="nav-item">
+            <a class="nav-link " ui-sref="signUp" style="color:red">SIGN UP </a>
+          </li>
+        </div>
+        <div ng-if=" state && newStateName !== 'dashboard'">
+          <li class="nav-item">
+            <a class="nav-link" ui-sref="dashboard" ng-click="listSavingsHistory()" style="color:red"> FIXED DASHBOARD
+            </a>
+          </li>
+        </div>
+        <div ng-if=" state && newStateName == 'dashboard'">
+          <li class="nav-item">
+            <a class="nav-link" ui-sref="recurringDashboard" ng-click="listRecurringSavingsHistory()" style="color:red">
+              RECURRING SAVINGS </a>
+          </li>
+        </div>
+        <div ng-if="state && newStateName != 'createPlan'">
+          <li class="nav-item">
+            <a class="nav-link" ui-sref="createPlan" style="color:red">CREATE PLAN </a>
+          </li>
+        </div>
+        <div>
+          <div ng-if=" newStateName == 'home' || (newStateName =='login') || (newStateName =='signUp')|| (newStateName =='createPlan')">
+            <li class="nav-item">
+              <!-- Button trigger modal -->
+              <a class="nav-link" data-toggle="modal" data-target="#exampleModal" data-backdrop="static" data-keyboard="true"
+                style="color:red">
+                ABOUT
+              </a>
+
+            </li>
+          </div>
+        </div>
+        <div ng-if="state">
+          <li class="nav-item">
+            <a class="nav-link" ui-sref="logout" style="color:red"> LOGOUT </a>
+          </li>
+        </div>
+
+      </ul>
+    </div>
+  </div>
+</nav>
+
+
+<!-- Modal -->
+<div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel"></h5>
+        <img src="ribyLogo.PNG" />
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <h3 style="color:red"> Savings Plans</h3>
+        <div class=" continer row">
+
+          <div class="col-sm-5 panel panel-primary">
+            <div class="panel-group">
+              <div class="panel-heading ">
+                <span>
+                  <i class="fa fa-stack-overflow" style="font-size:24px"></i>
+                </span>
+                <p style="color:red"> Fixed Savings </p>
+              </div>
+              <div class="panel-body">
+                Manage members cash contribution using digitized records,
+                with easy access to pay contributions through payment channels- Card,
+                on flutter waves.
+                Fixed Savings allow you to make <b>a one-time payment</b> after creating your plan
+
+              </div>
+            </div>
+          </div>
+
+
+          <div class=" col-sm-5 panel panel-danger">
+            <div class="panel-group">
+              <div class="panel-heading ">
+                <span>
+                  <i class="fa fa-square-o" style="font-size:24px" style="color:red"></i>
+                </span>
+                <p style="color:red"> Continuous Savings </p>
+              </div>
+              <div class="panel-body">
+                Manage continuous savings process. This allows you to create
+                a savings' plan. Thereafter, you can pay up your planned amount
+                <b>instamentally.</b>
+                Continuous payments will be via flutterwaves platform using your respective
+                bank cards.
+              </div>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+</div>

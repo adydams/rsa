@@ -1,0 +1,118 @@
+<div class="limiter">
+      <div class="wrapper ">
+                  <div class="sidebar" data-color="azure" data-background-color="white">
+                              <!--
+                                              Tip 1: You can change the color of the sidebar using: data-color="purple | azure | green | orange | danger"
+                                      
+                                              Tip 2: you can also add an image using data-image tag
+                                          -->
+            
+                              <div class="logo">
+                                    <h3 style="color:rgba(0, 152, 202, 0.856)">Dashboard</h3>
+                                    <img src="/img/faces/card-profile1-square.jpg" width="150" class="circle">
+                              </div>
+            
+                              <div class="sidebar-wrapper">
+                                    <div>
+                                          <h6 style="color:red">{{permission}}</h6>
+                                          <h6 style="color:red; font-style: italic">{{name}}</h6>
+                                    </div>
+                                    <ul class="nav wrapper">
+                                          <li class="nav-item ">
+                                                <a class="nav-link" ui-sref="home">
+                                                      <i class="material-icons">home</i>
+                                                      <p>Home</p>
+                                                </a>
+                                          </li>
+            
+                                          <li class="nav-item active  ">
+                                                <a class="nav-link" ui-sref="recurringDashboard" class="purple-text ">
+                                                      <i class="material-icons">dashboard</i>
+                                                      Recurring Dashboard
+                                                </a>
+                                          </li>
+                                          <li class="nav-item ">
+                                                <a class="nav-link" ui-sref="userProfile" ng-click="showUserProfile()">
+                                                      <i class="material-icons">person</i>
+                                                      <p>Your Profile</p>
+                                                </a>
+                                          </li>
+                                          <li class="nav-item ">
+                                                <a class="nav-link" ui-sref="createPlan">
+                                                      <i class="material-icons">content_paste</i>
+                                                      <p>Create New Plan</p>
+                                                </a>
+                                          </li>
+            
+                                          <li class="nav-item ">
+                                                <a class="nav-link" ui-sref="logout">
+                                                      <i class="material-icons">logout</i>
+                                                      <p>Logout</p>
+                                                </a>
+                                          </li>
+                                    </ul>
+                              </div>
+                        </div>
+            
+
+
+            <div class="main-panel">
+                  <!-- Navbar -->
+                  <div class="card">
+                        <div class="card-body">
+                              <div class="row">
+                                    <div class="col-md-12" style="color:brown">
+                                          <h4> Your Profile</h4>
+                                    </div>
+                              </div>
+                              <div class="row">
+                                    <h2 class="" style="color:brown">{{userDetails.name }}</h2>
+                              </div>
+                        
+                        <table id="usersProfile" class=" table-striped table-responsive-lg table-bordered">
+                              <tr>
+                                    <th class="dashboardheader" id= "usersProfileItems" style="color:rgba(0, 152, 202, 0.856);">Name</th>
+                                    <td class="dashboardheader " id= "usersProfileItems" style="color:rgba(0, 152, 202, 0.856);">{{
+                                          userDetails.name }}</td>
+                              </tr>
+                              <tr>
+                                    <th class="dashboardheader" id= "usersProfileItems" style="color:rgba(0, 152, 202, 0.856);">Email</th>
+                                    <td class="dashboardheader" id= "usersProfileItems" style="color:rgba(0, 152, 202, 0.856);">{{
+                                          userDetails.email }}</td>
+                              </tr>
+                              <tr>
+                                    <th class="dashboardheader" id= "usersProfileItems" style="color:rgba(0, 152, 202, 0.856);">Phone Number</th>
+                                    <td class="dashboardheader" id= "usersProfileItems" style="color:rgba(0, 152, 202, 0.856);">{{userDetails.phoneNumber
+                                          }}</td>
+                              </tr>
+                              <tr>
+                                    <th class="dashboardheader" id= "usersProfileItems" style="color:rgba(0, 152, 202, 0.856);">Account Number</th>
+                                    <td class="dashboardheader" id= "usersProfileItems" style="color:rgba(0, 152, 202, 0.856);">{{
+                                          (userDetails.accountNumber)?(userDetails.accountNumber): '---'
+                                          }}</td>
+                              </tr>
+                              <tr>
+                                    <th class="dashboardheader" id= "usersProfileItems" style="color:rgba(0, 152, 202, 0.856);">Bank Name</th>
+                                    <td class="dashboardheader" id= "usersProfileItems" style="color:rgba(0, 152, 202, 0.856);">{{
+                                          (userDetails.bankName)?(userDetails.bankName): '---'}}</td>
+                              </tr>
+                              <tr>
+                                    <th class="dashboardheader" id= "usersProfileItems" style="color:rgba(0, 152, 202, 0.856);">Action</th>
+                                    <td class="dashboardheader" id= "usersProfileItems">
+                                          <div class="dropdown dropdown dropleft dropdown-item ">
+                                                <button class=" btn btn-sm dropdown-toggle" data-toggle="dropdown"
+                                                      style="background:rgb(31, 187, 187)" id="actionDropDownButton">
+                                                      Actions
+                                                </button>
+                                                <div class="dropdown-menu" aria-labelledby="actionDropDownButton">
+                                                      <a class="btn btn-sm" style="background:rgb(31, 187, 187)"
+                                                            ui-sref="editProfile" ng-click="editUserProfile(userDetails._id)">
+                                                            <i class="fa fa-edit"></i>Edit</a>
+                                                </div>
+                                    </td>
+
+                              </tr>
+                        </table>
+                  </div>
+            </div>
+      </div>

@@ -1,0 +1,121 @@
+<div class="limiter">
+      <div class="wrapper ">
+            <div class="sidebar" data-color="azure" data-background-color="white" data-image="../assets/img/faces/card-profile2-square.jpg">
+                  <!--
+                                          Tip 1: You can change the color of the sidebar using: data-color="purple | azure | green | orange | danger"
+                                  
+                                          Tip 2: you can also add an image using data-image tag
+                                      -->
+
+                  <div class="logo">
+                        <div class="">
+                              <h3 style="color:rgba(0, 152, 202, 0.856)">Dashboard</h3>
+                              <img src="/img/faces/card-profile1-square.jpg" width="150" class="circle">
+                        </div>
+                  </div>
+
+                  <div class="sidebar-wrapper">
+                        <div>
+                              <h3 style="color:red">{{permission}}</h3>
+                              <h3 style="color:red">{{name}} </h3>
+                        </div>
+                        <ul class="nav wrapper">
+                              <li class="nav-item ">
+                                    <a class="nav-link" ui-sref="home">
+                                          <i class="material-icons">home</i>
+                                          <p>Home</p>
+                                    </a>
+                              </li>
+
+                              <li class="nav-item active  ">
+                                    <a class="nav-link" ui-sref="recurringDashboard" class="purple-text ">
+                                          <i class="material-icons">dashboard</i>
+                                          Recurring Dashboard
+                                    </a>
+                              </li>
+                              <li class="nav-item ">
+                                    <a class="nav-link" ui-sref="userProfile" ng-click="showUserProfile()">
+                                          <i class="material-icons">person</i>
+                                          <p>Your Profile</p>
+                                    </a>
+                              </li>
+                              <li class="nav-item ">
+                                    <a class="nav-link" ui-sref="createPlan">
+                                          <i class="material-icons">content_paste</i>
+                                          <p>Create New Plan</p>
+                                    </a>
+                              </li>
+                              <li class="nav-item ">
+                                    <a class="nav-link" ui-sref="editProfile" ng-click="showUserProfile()">
+                                          <i class="material-icons">person</i>
+                                          Update Bank details
+                                    </a>
+                              </li>
+                              <li class="nav-item ">
+                                    <a class="nav-link" ui-sref="logout">
+                                          <i class="material-icons">logout</i>
+                                          <p>Logout</p>
+                                    </a>
+                              </li>
+                        </ul>
+                  </div>
+            </div>
+            <div class="main-panel">
+                  <div class="card">
+                        <div class="card-body">
+                              <div class="row">
+                                    <div class="col-md-12">
+                                          <h4> Make Withdrawal</h4>
+                                          <hr/>
+                                          <p style="color:brown">Welcome {{name}}!</p>
+                                    </div>
+                              </div>
+                              <!-- Navbar -->
+                              <nav class="navbar navbar-header navbar-absolute fixed-top ">
+                                    <div class="container-fluid">
+                                          <div class="navbar-wrapper">
+
+                                                <div ng-if=" permission == 'Admin'  ">
+                                                      <div class=row>Administration area</div>
+                                                      <div>
+                                                            <div><a class="navbar-brand  btn-lg" ui-sref="listAllUsers"
+                                                                        ng-click="viewAllUser(userId, permission)"
+                                                                        style="color:rgba(0, 152, 202, 0.856);"><strong>View
+                                                                              Users</strong></a></div>
+                                                      </div>
+                                                </div>
+
+                                                <div ng-if=" permission == 'superAdmin' ">
+                                                      <div class="row" style="color:red">Super Administration area</div>
+
+                                                      <a class="btn btn-lg " style="background:rgb(31, 187, 187)"
+                                                            ui-sref="listAdmin" ng-click="viewAdmins(userId, permission)"><strong>Admins</strong></a>
+                                                      <a class="btn btn-lg " style="background:rgb(31, 187, 187)"
+                                                            ui-sref="listAllUsers" ng-click="viewAllUser(userId, permission)"><strong>View
+                                                                  Users</strong></a>
+                                                </div>
+                                          </div>
+                                    </div>
+
+                              </nav>
+                              <div class="container" id="penaltyWithdraw">
+                                    <div class="row main">
+                                          <div class="main-login main-center">
+                                                <form ng-submit="withdraw()" class=" form-horizontal">
+                                                      <div class="panel-title text-center">
+                                                            <h1 class="title" style="color:rgb(31, 187, 187)">Withdraw</h1>
+                                                            <hr />
+                                                      </div>
+                                                      <div class="text-center" id="penaltyButtons">
+                                                            <h4><strong>Do you want to withdraw?</strong></h4>
+
+                                                            <button type="submit" class="login200-form-btn btn-lg " type="button"
+                                                            style="background-color:rgba(0, 152, 202, 0.856);">
+                                                                  Withdraw</button>
+                                                      </div>
+                                                </form>
+                                          </div>
+                                    </div>
+                              </div>
+                        </div>
+                  </div>

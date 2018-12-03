@@ -1,0 +1,205 @@
+<div class="limiter">
+      <div class="wrapper ">
+            <div class="sidebar" data-color="azure" data-background-color="white">
+                  <!--
+                                        Tip 1: You can change the color of the sidebar using: data-color="purple | azure | green | orange | danger"
+                                
+                                        Tip 2: you can also add an image using data-image tag
+                                    -->
+                  <div class="logo">
+                        <h3 style="color:rgba(0, 152, 202, 0.856)">Dashboard</h3>
+                        <img src="/img/faces/card-profile1-square.jpg" width="150" class="circle">
+                  </div>
+
+                  <div class="sidebar-wrapper">
+                        <div>
+                              <h6 style="color:red">{{permission}}</h6>
+                              <h6 style="color:red; font-style: italic">{{name}}</h6>
+                        </div>
+                        <ul class="nav wrapper">
+                              <li class="nav-item ">
+                                    <a class="nav-link" ui-sref="home">
+                                          <i class="material-icons">home</i>
+                                          <p>Home</p>
+                                    </a>
+                              </li>
+
+                              <li class="nav-item active  ">
+                                    <a class="nav-link" ui-sref="dashboard" class="purple-text ">
+                                          <i class="material-icons">dashboard</i>
+                                          <p>Dashboard</p>
+                                    </a>
+                              </li>
+                              <li class="nav-item ">
+                                    <a class="nav-link" ui-sref="userProfile" ng-click="showUserProfile()">
+                                          <i class="material-icons">person</i>
+                                          <p>User Profile</p>
+                                    </a>
+                              </li>
+                              <li class="nav-item ">
+                                    <a class="nav-link" ui-sref="createPlan">
+                                          <i class="material-icons">content_paste</i>
+                                          <p>Create New Plan</p>
+                                    </a>
+                              </li>
+                              <li class="nav-item ">
+                                    <a class="nav-link active">
+                                          <i class="material-icons">Pending</i>
+                                          <p>Pending Payment
+                                                <span class="badge badge-danger">{{pendingPayment}}</span>
+                                          </p>
+                                    </a>
+                              </li>
+                              <li class="nav-item ">
+                                    <a class="nav-link" ui-sref="logout">
+                                          <i class="material-icons">library_books</i>
+                                          <p>Logout</p>
+                                    </a>
+                              </li>
+                        </ul>
+                  </div>
+            </div>
+
+
+            <div class="main-panel">
+                  <!-- Navbar -->
+                  <nav class="navbar navbar-header navbar-absolute fixed-top ">
+
+                        <h3 style="color:rgba(0, 152, 202, 0.856); font-style: italic "><strong>Recurring Savings
+                                    Dashboard</strong>
+                        </h3>
+                        <div class="container-fluid">
+                              <div class="navbar-wrapper">
+                                    <div ng-if=" permission == 'Admin'  ">
+                                          <div class="row" style="color: brown">Administration area</div>
+                                          <a class="btn btn-sm " style="background:rgb(31, 187, 187)" ui-sref="listAllUsers"
+                                                ng-click="viewAllUser(userId, permission)"><strong>View
+                                                      Users</strong></a>
+                                    </div>
+                                    <div ng-if=" permission == 'superAdmin' ">
+                                          <div class="row" style="color:rgb(146, 102, 102)">Super Administration area</div>
+
+                                          <a class="btn btn-lg " style="background:rgb(31, 187, 187)" ui-sref="listAdmin"
+                                                ng-click="viewAdmins(userId, permission)"><strong>Admins</strong></a>
+                                          <a class="btn btn-lg " style="background:rgb(31, 187, 187)" ui-sref="listAllUsers"
+                                                ng-click="viewAllUser(userId, permission)"><strong>View
+                                                      Users</strong></a>
+                                    </div>
+                              </div>
+                        </div>
+                  </nav>
+                  <table id="recurringDashboardTable" class="table-responsive table-bordered table-striped">
+                        <thead style="color:rgba(0, 152, 202, 0.856);">
+                              <tr>
+                                    <th class="dashboardheader">S/N</th>
+                                    <th class="dashboardheader">Amount Invested</th>
+                                    <th class="dashboardheader">Duration</th>
+                                    <th class="dashboardheader">Savings Plan</th>
+                                    <th class="dashboardheader">Interest</th>
+                                    <th class="dashboardheader">Accumulated Amount</th>
+                                    <th class="dashboardheader">Amount Expected</th>
+                                    <th class="dashboardheader">Plan Creation Date</th>
+                                    <th class="dashboardheader">PayBack Date</th>
+                                    <th class="dashboardheader">Withdrawal Date</th>
+                                    <th class="dashboardheader">Amount Withdrawn</th>
+                                    <th class="dashboardheader">Balance</th>
+                                    <th class="dashboardheader">Next Date of payment</th>
+                                    <th class="dashboardheader">Withdrawal Status</th>
+                                    <th class="dashboardheader">Action</th>
+                              </tr>
+                        </thead>
+                        <tbody>
+                              <tr dir-paginate="saving in savings | itemsPerPage: 8" ng-class="(saving.withdrawalStatus == true)? 'green': ''" >
+                                    <td class="dashboardheader"><span class="listing-number">{{ $index + 1 }}</span></td>
+                                    <td class="dashboardheader">#{{ saving.amount | number }}</td>
+                                    <td class="dashboardheader">{{ saving.duration }} month(s)</td>
+                                    <td class="dashboardheader">{{ saving.savingsPlan }}</td>
+                                    <td class="dashboardheader">{{ saving.interest}}</td>
+                                    <td class="dashboardheader">#{{ saving.accumulatedInterest | number }}</td>
+                                    <td class="dashboardheader">#{{ saving.amountExpected | number }}</td>
+                                    <td class="dashboardheader">{{ saving.paymentDate | date}}</td>
+                                    <td class="dashboardheader">{{ saving.dueDateForWithdrawal | date }}</td>
+                                    <td class="dashboardheader">{{ (saving.withdrawalDate) ? (saving.withdrawalDate) :'
+                                          -- ' | date }} </td>
+                                    <td class="dashboardheader">#{{ saving.amountWithdraw | number }}</td>
+                                    <td class="dashboardheader">#{{ saving.balance | number }}</td>
+                                    <td class="dashboardheader">{{ saving.nextDateOfdeposit | date}}</td>
+                                    <td class="dashboardheader">{{ saving.withdrawalStatus }}</td>
+                                    <td class="dashboardheader">
+                                          <div class="dropdown dropdown dropleft dropdown-item ">
+                                                <button class=" btn btn-sm dropdown-toggle" data-toggle="dropdown"
+                                                      style="background:rgb(31, 187, 187)" id="actionDropDownButton">
+                                                      Actions
+                                                </button>
+                                                <div class="dropdown-menu" aria-labelledby="actionDropDownButton">
+                                                      <button class="btn btn-sm" data-toggle="modal" data-target="#paymentDetails"
+                                                            style="background:rgb(31, 187, 187)" data-keyboard="true"
+                                                            ng-click="viewDetails(saving._id, saving.amountDeposited, saving.amountPerDeposit, saving.balance)">
+                                                            Details
+                                                      </button>
+                                                      <button ng-if="saving.balance > 0 " ng-if="!saving.withdrawalStatus" class="btn btn-sm " style="background:rgb(31, 187, 187)"
+                                                            ng-click="payWithRave(saving._id, saving.amountPerDeposit, saving.balance)">
+                                                            Make Payment
+                                                      </button>
+                                                      <button ng-if="saving.balance == 0" ng-if="!saving.withdrawalStatus" class="btn btn-sm "
+                                                            style="background:rgb(31, 187, 187)" ng-click="withdraw(saving._id, saving.withdrawalStatus, saving.dueDateForWithdrawal, saving.balance, saving.savingsMode, saving.amountDeposited)">
+                                                            Withdraw
+                                                      </button>
+
+                                                </div>
+                                          </div>
+                                    </td>
+                              </tr>
+                        </tbody>
+                  </table>
+                  <div class="other-controller">
+                        <div class="text-center">
+                              <dir-pagination-controls boundary-links="true" template-url="dirPagination.tpl.html"
+                                    on-page-change="pageChanged(newPageNumber)"></dir-pagination-controls>
+                        </div>
+                  </div>
+
+                  <div class="modal fade" id="paymentDetails" tabindex="-1" role="dialog" aria-labelledby="paymentDetails"
+                        aria-hidden="true">
+                        <div class="modal-dialog" role="document">
+                              <div class="modal-content">
+                                    <div class="modal-header">
+                                          Payment History
+                                          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                                <span aria-hidden="true">&times;</span>
+                                          </button>
+                                    </div>
+                                    <div class="modal-body">
+                                          <table class=" responsive-table range-field push-s12 striped table-bordered">
+                                                <thead>
+                                                      <tr>
+                                                            <th>S/N</th>
+                                                            <th>Payment Date</th>
+                                                            <th>Amount per Deposit</th>
+                                                      </tr>
+
+                                                </thead>
+                                                <tbody>
+                                                      <tr dir-paginate="saving in savingsDetails | itemsPerPage: 7">
+                                                            <td><span class="listing-number">{{ $index + 1 }}</span></td>
+                                                            <td>{{ saving.paymentDate | date }}</td>
+                                                            <td>#{{ amountPerDeposit }}</td>
+                                                      </tr>
+                                                      <tr>
+                                                            <h3>Total Amount Deposited: #{{ amountDeposited }}</h3>
+                                                      </tr>
+                                                      <tr>
+                                                            <h3>Balance: #{{(balance) ? (balance) :' 0.00 '}} </h3>
+                                                      </tr>
+
+                                                </tbody>
+                                          </table>
+                                    </div>
+                              </div>
+                        </div>
+                  </div>
+
+            </div>
+      </div>
+
+</div>

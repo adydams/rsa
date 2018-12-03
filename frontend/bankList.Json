@@ -1,0 +1,171 @@
+{    
+"status": "success",
+    "message": "Banks",
+    "data": [
+        {
+            "name": "ACCESS BANK NIGERIA",
+            "code": "044",
+            "country": "NG"
+        },
+        {
+            "name": "ACCESS MOBILE",
+            "code": "323",
+            "country": "NG"
+        },
+        {
+            "name": "AFRIBANK NIGERIA PLC",
+            "code": "014",
+            "country": "NG"
+        },
+        {
+            "name": "Aso Savings and Loans",
+            "code": "401",
+            "country": "NG"
+        },
+        {
+            "name": "DIAMOND BANK PLC",
+            "code": "063",
+            "country": "NG"
+        },
+        {
+            "name": "Ecobank Mobile",
+            "code": "307",
+            "country": "NG"
+        },
+        {
+            "name": "ECOBANK NIGERIA PLC",
+            "code": "050",
+            "country": "NG"
+        },
+        {
+            "name": "ENTERPRISE BANK LIMITED",
+            "code": "084",
+            "country": "NG"
+        },
+        {
+            "name": "FBN MOBILE",
+            "code": "309",
+            "country": "NG"
+        },
+        {
+            "name": "FIDELITY BANK PLC",
+            "code": "070",
+            "country": "NG"
+        },
+        {
+            "name": "FIRST BANK PLC",
+            "code": "011",
+            "country": "NG"
+        },
+        {
+            "name": "FIRST CITY MONUMENT BANK PLC",
+            "code": "214",
+            "country": "NG"
+        },
+        {
+            "name": "GTBank Mobile Money",
+            "code": "315",
+            "country": "NG"
+        },
+        {
+            "name": "GTBANK PLC",
+            "code": "058",
+            "country": "NG"
+        },
+        {
+            "name": "HERITAGE BANK",
+            "code": "030",
+            "country": "NG"
+        },
+        {
+            "name": "KEYSTONE BANK PLC",
+            "code": "082",
+            "country": "NG"
+        },
+        {
+            "name": "Parkway",
+            "code": "311",
+            "country": "NG"
+        },
+        {
+            "name": "PAYCOM",
+            "code": "305",
+            "country": "NG"
+        },
+        {
+            "name": "SKYE BANK PLC",
+            "code": "076",
+            "country": "NG"
+        },
+        {
+            "name": "STANBIC IBTC BANK PLC",
+            "code": "221",
+            "country": "NG"
+        },
+        {
+            "name": "Stanbic Mobile",
+            "code": "304",
+            "country": "NG"
+        },
+        {
+            "name": "STANDARD CHARTERED BANK NIGERIA LIMITED",
+            "code": "068",
+            "country": "NG"
+        },
+        {
+            "name": "STERLING BANK PLC",
+            "code": "232",
+            "country": "NG"
+        },
+        {
+            "name": "UNION BANK OF NIGERIA PLC",
+            "code": "032",
+            "country": "NG"
+        },
+        {
+            "name": "UNITED BANK FOR AFRICA PLC",
+            "code": "033",
+            "country": "NG"
+        },
+        {
+            "name": "UNITY BANK PLC",
+            "code": "215",
+            "country": "NG"
+        },
+        {
+            "name": "WEMA BANK PLC",
+            "code": "035",
+            "country": "NG"
+        },
+        {
+            "name": "ZENITH BANK PLC",
+            "code": "057",
+            "country": "NG"
+        },
+        {
+            "name": "ZENITH Mobile",
+            "code": "322",
+            "country": "NG"
+        },
+        {
+            "name": "Coronation Merchant Bank",
+            "code": "559",
+            "country": "NG"
+        },
+        {
+            "name": "FSDH Merchant Bank Limited",
+            "code": "601",
+            "country": "NG"
+        },
+        {
+            "name": "PARRALEX BANK",
+            "code": "526",
+            "country": "NG"
+        },
+        {
+            "secretKey":"FLWPUBK-7ed8d7e8a38730bf7b7163a3d4e53eef-X"
+        }
+
+    ]
+}
+

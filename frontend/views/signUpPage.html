@@ -1,0 +1,104 @@
+<div class="container" id="signUpForm">
+    <div class="row main">
+        <div class="main-login main-center">
+            <form ng-submit="signUp()" class="form-horizontal" id="signUpForm" name="signUpForm">
+                <div class="panel-heading">
+                    <div class="panel-title text-center">
+                        <h1 class="title" style="color:rgb(31, 187, 187)">Sign Up</h1>
+                        <hr />
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="name" class="cols-sm-2 control-label">Your Name</label>
+                    <div class="cols-sm-10">
+                        <div class="input-group">
+                            <span class="input-group-addon"><i class="fa fa-user fa" aria-hidden="true"></i></span>
+                            <input type="text" class="form-control" name="name" id="name" placeholder="Enter your Name"
+                                ng-model="user.name" required />
+                        </div>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label for="email" class="cols-sm-2 control-label">Your Email</label>
+                    <div class="cols-sm-10">
+                        <div class="input-group">
+                            <span class="input-group-addon"><i class="fa fa-envelope fa" aria-hidden="true"></i></span>
+                            <input type="email" class="form-control" name="email" id="email" placeholder="Enter your Email"
+                                ng-model="user.email" required />
+                            <span class="error-message" ng-show="showMessage(signUpForm.email)" style="color:red">Please
+                                complete this field.
+                            </span>
+                            <span ng-show="!signUpForm.email.$error.required
+                                    && signUpForm.email.$error.email && signUpForm.email.$dirty"
+                                style="color:red">invalid email
+                            </span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label for="phoneNumber" class="cols-sm-2 control-label">Phone Number</label>
+                    <div class="cols-sm-10">
+                        <div class="input-group">
+                            <span class="input-group-addon"><i class="fa fa-users fa" aria-hidden="true"></i></span>
+                            <input type="text" class="form-control" name="phoneNumber" id="phoneNumber" placeholder="Enter your phone number"
+                                ng-model="user.phoneNumber" ng-maxlength="11" restrict-input="{type: 'validPhoneCharsOnly'}"
+                                required />
+
+                            <span ng-show="signUpForm.phoneNumber.$error.maxlength" style="color:red">
+                                11 digits only
+                            </span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label for="password" class="cols-sm-2 control-label">Password</label>
+                    <div class="cols-sm-10">
+                        <div class="input-group">
+                            <span class="input-group-addon"><i class="fa fa-lock fa-lg" aria-hidden="true"></i></span>
+                            <input type="password" class="form-control" name="password" id="password" placeholder="Enter your Password"
+                                ng-model="user.password" ng-pattern="/^(?=.*?[A-Z])(?=(.*[a-z]){1,})(?=(.*[\d]){1,})(?=(.*[\W]){1,})(?!.*\s).{8,}$/"
+                                ng-blur="pswd=true" required />
+
+                            <span class="error-message" ng-show="showMessage(signUpForm.password)" style="color:red">Please
+                                complete this field.
+                            </span>
+                            <span ng-show="signUpForm.password.$error.pattern" style="color:red">
+                                1 uppercase, 1 lowercase, 1 special character and at least 8 characters
+                            </span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label for="confirm" class="cols-sm-2 control-label">Confirm Password</label>
+                    <div class="cols-sm-10">
+                        <div class="input-group">
+                            <span class="input-group-addon"><i class="fa fa-lock fa-lg" aria-hidden="true"></i></span>
+                            <input type="password" class="form-control" name="confirmPassword" id="confirmPassword"
+                                placeholder="Confirm your Password" ng-model="user.confirmPassword" compare-to="user.password"
+                                ng-blur="cnpswd=true" required />
+                            <span class="error-message" ng-show="showMessage(signUpForm.confirmPassword)" style="color:red">Please
+                                complete this field.
+                            </span>
+                            <span class="error-message" ng-show="signUpForm.confirmPassword.$error.compareTo" style="color:red">
+                                Password dont match
+                            </span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="form-group ">
+                    <button type="submit" class="btn btn-primary btn-lg btn-block login-button" style="background:rgb(31, 187, 187)">Register</button>
+                </div>
+                <div class="login-register">
+                    <a ui-sref="login">Login</a>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+
+<script type="text/javascript" src="assets/js/bootstrap.js"></script>

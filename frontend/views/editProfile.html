@@ -1,0 +1,153 @@
+<div class="limiter ">
+    <div class="wrapper ">
+        <div class="sidebar" data-color="azure" data-background-color="white">
+            <!--
+                                    Tip 1: You can change the color of the sidebar using: data-color="purple | azure | green | orange | danger"
+                            
+                                    Tip 2: you can also add an image using data-image tag
+                                -->
+
+            <div class="logo">
+                <h3 style="color:rgba(0, 152, 202, 0.856)">Dashboard</h3>
+                <img src="/img/faces/card-profile1-square.jpg" width="150" class="circle">
+            </div>
+
+            <div class="sidebar-wrapper">
+                <div>
+                    <h6 style="color:red">{{permission}}</h6>
+                    <h6 style="color:red; font-style: italic">{{name}}</h6>
+                </div>
+                <ul class="nav wrapper">
+                    <li class="nav-item ">
+                        <a class="nav-link" ui-sref="home">
+                            <i class="material-icons">home</i>
+                            <p>Home</p>
+                        </a>
+                    </li>
+
+                    <li class="nav-item active  ">
+                        <a class="nav-link" ui-sref="recurringDashboard" class="purple-text ">
+                            <i class="material-icons">dashboard</i>
+                            Recurring Dashboard
+                        </a>
+                    </li>
+                    <li class="nav-item ">
+                        <a class="nav-link" ui-sref="userProfile" ng-click="showUserProfile()">
+                            <i class="material-icons">person</i>
+                            <p>Your Profile</p>
+                        </a>
+                    </li>
+                    <li class="nav-item ">
+                        <a class="nav-link" ui-sref="createPlan">
+                            <i class="material-icons">content_paste</i>
+                            <p>Create New Plan</p>
+                        </a>
+                    </li>
+
+                    <li class="nav-item ">
+                        <a class="nav-link" ui-sref="logout">
+                            <i class="material-icons">logout</i>
+                            <p>Logout</p>
+                        </a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+
+
+        <div classs="main-panel" id="editProfile">
+            <div class="card-body">
+                <div class="row">
+                    <div class="col-md-12">
+                        <h4>Edit Profile</h4>
+                        <hr>
+                    </div>
+                </div>
+                <!-- <div id="editProfileInner"> -->
+                <div class="row">
+                    <div class="col-md-12">
+                        <div>
+                            <h3>Update Your Profile Details</h3>
+                            <hr />
+                        </div>
+
+                        <form class="form-group " id="editProfileForm" name="editProfileForm">
+                            <div class="form-group row">
+                                <label for="name" class="col-4 col-form-label">
+                                    <i class="material-icons">person</i> <b>Name</b>
+                                </label>
+                                <div class="col-8">
+                                    <input type="text" ng-model="updateUserDetails.name" class="form-control here"
+                                        placeholder="{{userDetails.name}}" required>
+                                </div>
+                            </div>
+                            <div class="form-group row">
+                                <label for="email" class="col-4 col-form-label">
+                                    <i class="material-icons">email</i><b>Email</b>
+                                </label>
+                                <div class="col-8">
+                                    <input type="email" id="email" name="email" ng-model="updateUserDetails.email"
+                                        class="form-control here" placeholder="{{userDetails.email}}" required>
+                                    <span class="error-message" ng-show="showMessage(editProfileForm.email)" style="color:red">Please
+                                        complete this field.
+                                    </span>
+                                    <span ng-show="!editProfileForm.email.$error.required && editProfileForm.email.$error.email && editProfileForm.email.$dirty"
+                                        style="color:red">invalid email
+                                    </span>
+                                </div>
+                            </div>
+                            <div class="form-group row">
+                                <label for="phoneNumber" class="col-4 col-form-label">
+                                    <i class="material-icons">phone</i><b>Phone</b>
+                                </label>
+                                <div class="col-8">
+                                    <input type="text" id="phoneNumber" name="phoneNumber" ng-model="updateUserDetails.phoneNumber"
+                                        class="form-control here" placeholder="{{userDetails.phoneNumber}}"
+                                        ng-maxlength="11" restrict-input="{type: 'validPhoneCharsOnly'}" required>
+                                    <span ng-show="editProfileForm.phoneNumber.$error.maxlength" style="color:red">
+                                        11 digits only
+                                    </span>
+                                </div>
+                            </div>
+                            <div>
+                                <h3>Update Your Bank Details</h3>
+                                <hr />
+                            </div>
+                            <div class="form-group row">
+                                <label for="bankName" class="col-4 col-form-label">
+                                    <i class="fa fa-bank"></i><b> Bank Name</b>
+                                </label>
+                                <div class="col-8">
+                                    <input type="text" class="form-control here" id="bankName" name="bankName" ng-model="updateUserDetails.bankName"
+                                        placeholder="{{userDetails.bankName}}" required>
+                                    <span class="error-message" ng-show="showMessage(editProfileForm.bankName)" style="color:red">Please
+                                        complete this field.
+                                    </span>
+                                    <span ng-show="!editProfileForm.email.$error.required
+                                    && editProfileForm.bankName.$error.bankName && editProfileForm.bankName.$dirty"
+                                        style="color:red">invalid bank name
+                                    </span>
+                                </div>
+                            </div>
+                            <div class="form-group row">
+                                <label for="accountNumber" class="col-4 col-form-label">
+                                    <i class="fa fa-money"></i><b>Account Number</b>
+                                </label>
+                                <div class="col-8">
+                                    <input type="text" class="form-control here" id="accountNumber" name="accountNumber"
+                                        ng-model="updateUserDetails.accountNumber" ng-maxlength="11" restrict-input="{type: 'validPhoneCharsOnly'}"
+                                        placeholder="{{userDetails.accountNumber}}" required>
+                                </div>
+                            </div>
+                            <div class="form-group row">
+                                <div class="offset-4 col-8">
+                                    <button ng-click="editUserProfile()" class="login200-form-btn btn-lg" style="background-color:lightblue">
+                                        Update
+                                    </button>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>        

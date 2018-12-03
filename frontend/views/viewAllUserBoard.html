@@ -1,0 +1,185 @@
+<div class="limiter">
+      <div class="wrapper ">
+            <div class="sidebar" data-color="azure" data-background-color="white" data-image="../assets/img/faces/card-profile2-square.jpg">
+                  <!--
+                                        Tip 1: You can change the color of the sidebar using: data-color="purple | azure | green | orange | danger"
+                                
+                                        Tip 2: you can also add an image using data-image tag
+                                    -->
+
+                  <div class="logo">
+                        <div class="">
+                              <h3 style="color:rgba(0, 152, 202, 0.856)">Dashboard</h3>
+                              <img src="/img/faces/card-profile1-square.jpg" width="150" class="circle">
+                        </div>
+                  </div>
+
+                  <div class="sidebar-wrapper">
+                        <div>
+                              <h3 style="color:red">{{permission}}</h3>
+                              <h3 style="color:red">{{name}} </h3>
+                        </div>
+                        <ul class="nav wrapper">
+                              <li class="nav-item ">
+                                    <a class="nav-link" ui-sref="home">
+                                          <i class="material-icons">home</i>
+                                          <p>Home</p>
+                                    </a>
+                              </li>
+
+                              <li class="nav-item active  ">
+                                    <a class="nav-link" ui-sref="recurringDashboard" class="purple-text ">
+                                          <i class="material-icons">dashboard</i>
+                                          <p>Recurring Dashboard</p>
+                                    </a>
+                              </li>
+                              <li class="nav-item ">
+                                    <a class="nav-link" ui-sref="userProfile" ng-click="showUserProfile()">
+                                          <i class="material-icons">person</i>
+                                          <p>Your Profile</p>
+                                    </a>
+                              </li>
+                              <li class="nav-item ">
+                                    <a class="nav-link" ui-sref="createPlan">
+                                          <i class="material-icons">content_paste</i>
+                                          <p>Create New Plan</p>
+                                    </a>
+                              </li>
+
+                              <li class="nav-item ">
+                                    <a class="nav-link" ui-sref="logout">
+                                          <i class="material-icons">logout</i>
+                                          <p>Logout</p>
+                                    </a>
+                              </li>
+                        </ul>
+                  </div>
+            </div>
+            <div class="main-panel">
+                  <h3 style="color:rgba(0, 152, 202, 0.856); font-style: italic "><strong>Fixed Savings Dashboard</strong>
+                  </h3>
+                  <!-- Navbar -->
+                  <nav class="navbar navbar-header navbar-absolute fixed-top ">
+                        <div class="container-fluid">
+                              <div class="navbar-wrapper">
+
+                                    <div ng-if=" permission == 'Admin'  ">
+                                                <div ng-if=" permission == 'Admin'  ">
+                                                            <div class="row" style="color: brown">Administration area</div>
+                                                                 <a class="btn btn-sm " style="background:rgb(31, 187, 187)" ui-sref="listAllUsers"
+                                                                        ng-click="viewAllUser(userId, permission)"><strong>View
+                                                                              Users</strong></a>
+                                                            
+                                                      </div>
+                                    </div>
+
+                                    <div ng-if=" permission == 'superAdmin' ">
+                                          <div class="row" style="color:red">Super Administration area</div>
+
+                                          <a class="btn btn-sm " style="background:rgb(31, 187, 187)" ui-sref="listAdmin"
+                                                ng-click="viewAdmins(userId, permission)"><strong>Admins</strong></a>
+                                          <a class="btn btn-sm " style="background:rgb(31, 187, 187)" ui-sref="listAllUsers"
+                                                ng-click="viewAllUser(userId, permission)"><strong>View
+                                                      Users</strong></a>
+                                    </div>
+                              </div>
+                        </div>
+                  </nav>
+
+                  <table id="viewAllUsersTable" class=" table-striped table-responsive-xl table-bordered  table-full-width">
+                        <thead style="color:rgba(0, 152, 202, 0.856);">
+                              <tr>
+                                    <th class="dashboardheader">S/N</th>
+                                    <th class="dashboardheader">Name</th>
+                                    <th class="dashboardheader">Email</th>
+                                    <th class="dashboardheader">Tel.</th>
+                                    <th class="dashboardheader">User type</th>
+                                    <th class="dashboardheader">Actions</th>
+                              </tr>
+
+                        </thead>
+
+                        <tbody>
+                              <tr ng-repeat="user in users" ng-if=" permission == 'superAdmin'">
+
+                                    <td class="dashboardheader dashboardheader"><span class="listing-number">{{ $index + 1 }}</span></td>
+                                    <td class="dashboardheader dashboardheader">{{ user.name }}</td>
+                                    <td class="dashboardheader dashboardheader">{{ user.email }}</td>
+                                    <td class="dashboardheader dashboardheader">{{ user.phoneNumber }}</td>
+                                    <td class="dashboardheader dashboardheader">{{ user.permission }}</td>
+                                    <td class="dashboardheader dashboardheader">
+                                          <div ng-if=" user.permission == 'Admin'">
+                                                <div class="dropdown dropright">
+                                                      <button class=" btn btn-sm dropdown-toggle" data-toggle="dropdown" style="background:rgb(31, 187, 187)">
+                                                            Actions
+                                                      </button>
+                                                      <div class="dropdown-menu">
+                                                            <button class="btn btn-sm dropdown-item  " style="background:rgb(31, 187, 187)"
+                                                                  ng-click="listUserSavings(user._id, user.name)">
+                                                                  Savings</button>
+                                                            <button ng-click="changeToRegularUser(user._id)" class="btn btn-sm  dropdown-item"
+                                                                  style="background:rgb(31, 187, 187)">Change
+                                                                  To User</button>
+                                                      </div>
+                                                </div>
+                                          </div>
+                                          <div ng-if="user.permission == 'regularUser' ">
+
+                                                <div class="dropdown dropright">
+                                                      <button class=" btn dropdown-toggle" data-toggle="dropdown" style="background:rgb(31, 187, 187)">
+                                                            Actions
+                                                      </button>
+                                                      <div class="dropdown-menu">
+                                                            <button class="btn btn-sm dropdown-item  " style="background:rgb(31, 187, 187)"
+                                                                  ng-click="listUserSavings(user._id, user.name)">
+                                                                  Savings</button>
+                                                            <button class=" btn btn-sm" ng-click="newAdmin(user._id)" class="btn btn-lg "
+                                                                  style="background:rgb(31, 187, 187)">Make an Admin
+                                                            </button>
+                                                      </div>
+                                                </div>
+                                          </div>
+                                          <div ng-if="user.permission == 'superAdmin' ">
+                                                 <button class="btn btn-sm "
+                                                      style="background:rgb(31, 187, 187)" ng-click="listUserSavings(user._id, user.name)">
+                                                      Savings</button>
+                                          </div>
+                                    </td>
+                              </tr>
+                        </tbody>
+                        <tbody>
+                              <tr ng-repeat="user in users" ng-if=" permission == 'Admin'">
+
+                                    <td class="dashboardheader dashboardheader"><span class="listing-number">{{ $index + 1 }}</span></td>
+                                    <td class="dashboardheader dashboardheader">{{ user.name }}</td>
+                                    <td class="dashboardheader dashboardheader">{{ user.email }}</td>
+                                    <td class="dashboardheader dashboardheader">{{ user.phoneNumber }}</td>
+                                    <td class="dashboardheader dashboardheader">{{ user.permission }}</td>
+                                    <td class="dashboardheader dashboardheader">
+                                          <button  class="btn btn-sm"style="background:rgb(31, 187, 187)" ng-click="listUserSavings(user._id, user.name)">
+                                                Savings</button>
+                                    </td>
+                              </tr>
+                        </tbody>
+
+            </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+            </table>
+      </div>
+</div>
+</div>
+</div>
+</div>
+<br><br>
